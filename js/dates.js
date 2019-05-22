@@ -1,26 +1,53 @@
 import { getState } from "/js/state.js"
 
-function getDates () {
-  let region = getState("region")
-  let dateIds = getState("ids")
+async function getDates () {
+  let region = getState("area_id")
+  let dateIds = getState("date_id")
 
   if (!region && dateIds) {
-    let dates = dateIds.map(id async => {
-      let date = await fetch(process.env.HYCTH_CMS_URI + "/activities?id=" + id)
-      return date
-    })
+    dateIds = dateIds.split(',')
+    let dates = []
+    for (let i=0; i<dateIds.length; i++) {
+      let response = await fetch("https://hytch-cms.herokuapp.com/activities?id=" + dateIds[i])
+      let date = await response.json()
+      dates.push(date[0])
+    }
     return dates
   }
 
-  if (region) return await fetch(process.env.HYCTH_CMS_URI + "/activities?region=" + region)
+  if (region) {
+    let response = await fetch("https://hytch-cms.herokuapp.com/activities?area_id=" + region)
+    let dates = await response.json()
+    return dates
+  }
 
-  return await fetch(process.env.HYCTH_CMS_URI + "/activities")
+  let response = await fetch("https://hytch-cms.herokuapp.com/activities")
+  let dates = await response.json()
+  return dates
 }
 
 function displayDates (dates) {
-  // create list items for each data and push to list in dates section
-  console.log(dates)
+  dates.forEach(date => {
+    console.log(date)
+
+    // create list item for date and append to dates-list
+    let dateLi = document.createElement("li")
+    let dateTitle = document.createElement("h2")
+    let dateDesc = document.createElement("p")
+
+    dateTitle.textContent = date.title
+    dateDesc.textContent = date.description
+
+    dateLi.appendChild(dateTitle)
+    dateLi.appendChild(dateDesc)
+
+    document.querySelector("#dates-list").append(dateLi)
+  })
 }
 
-var dates = getDates()
-displayDates(dates)
+async function setupDates () {
+  var dates = await getDates()
+  displayDates(dates)
+}
+
+export { setupDates }

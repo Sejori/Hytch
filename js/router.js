@@ -1,15 +1,18 @@
-import { createState, updateState } from "/js/state.js"
+import { createState, updateState, getState } from "/js/state.js"
+import { setupDates } from "/js/dates.js"
 
 // define the routes inside an object called routes and assign each route it's content div
 // make sure 404 is final route
 var routes = [
   {
     pathname: "/",
-    div: document.getElementById("home")
+    div: document.getElementById("home"),
+    setup: null
   },
   {
     pathname: "/dates",
-    div: document.getElementById("dates")
+    div: document.getElementById("dates"),
+    setup: setupDates
   }
 ]
 
@@ -34,17 +37,13 @@ function storeParams () {
       updateState({
         _var: key,
         value: value,
-        listeners: [
-          "dates"
-        ]
+        listeners: []
       })
     } else {
       createState({
         _var: key,
         value: value,
-        listeners: [
-          "dates"
-        ]
+        listeners: []
       })
     }
   })
@@ -60,6 +59,7 @@ function router() {
 
   // get clean pathname
   let pathname = getPathname()
+  console.log(pathname)
 
   // store parameters in state
   storeParams()
@@ -70,6 +70,8 @@ function router() {
   if (route) {
     // do routing functions
     route.div.style.display = "flex"
+
+    if (route.setup) route.setup()
   } else {
     console.log('404: Route not found')
     // return 404 content
