@@ -59,7 +59,6 @@ function router() {
 
   // get clean pathname
   let pathname = getPathname()
-  console.log(pathname)
 
   // store parameters in state
   storeParams()

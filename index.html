@@ -7,12 +7,43 @@
   </head>
   <body>
     <section id="home" class="route">
-      home
+      <h1>Hytch</h1>
+      <h2>Plan the perfect date - together</h2>
+
+      <div class="desc-box row">
+        <img src="/assets/hytch-points.png" alt="hytch_points">
+        <p>A Hytch is two places or events in London that go together to make the perfect date.</p>
+      </div>
+
+      <ol>
+        <li>Choose an area of London</li>
+        <li>Pick 1 or 2 of your fave Hytches</li>
+        <li>Share your choice with your date or choose on together</li>
+      </ol>
+
+      <form class="area-form" action="/dates" method="get">
+        <select class="area-select" name="area_id">
+          <option value="1">North</option>
+          <option value="2">East</option>
+          <option value="3">South</option>
+          <option value="4">West</option>
+        </select>
+        <br><br>
+        <button type="submit">Let's do it!</button>
+      </form>
     </section>
 
     <section id="dates" class="route">
-      dates
+      <div class="section-header">
+        <p id="region-text" class="align-left"></p>
+        <p class="align-left"><strong>Choose at least two:</strong></p>
+      </div>
+
       <ul id="dates-list"></ul>
+
+      <div id="date-share-div">
+        <button id="dates-share-button">Share with bae</button>
+      </div>
     </section>
 
     <!-- SCRIPTS -->

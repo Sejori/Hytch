@@ -1,2 +1,12 @@
-body { margin: 0; padding: 0; height: 100vh; width: 100vw; font-family: sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+body { margin: 0; padding: 0; width: 100vw; height: 100vh; font-family: sans-serif;}
+section { max-width: 800px; margin: auto; flex-direction: column; align-items: center; }
+.section-header { padding: 20px; }
 .route { display: none; }
+.row { display: flex; }
+.align-left { align-self: flex-start; }
+
+#home { width: 100%; height: 100%; justify-content: center; }
+.desc-box { max-width: 500px; margin: 10px; background-color: #777; padding: 20px; }
+.desc-box * { padding: 5px; }
+
+#region-text { display: none; }
