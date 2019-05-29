@@ -3,52 +3,78 @@
   <head>
     <meta charset="utf-8">
     <title>Hytch</title>
+
+    <!-- styles -->
     <link rel="stylesheet" href="/styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Varela+Round&display=swap" rel="stylesheet">
+
+    <!-- icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+    <link rel="manifest" href="/assets/icons/site.webmanifest">
+    <link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/assets/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="msapplication-config" content="/assets/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
   </head>
   <body>
     <section id="home" class="route">
-      <h1>Hytch</h1>
-      <h2>Plan the perfect date - together</h2>
+      <div class="section-content align-center spaced">
+        <div class="app-title-text align-center">
+          <h1 class="app-title">Hytch</h1>
+          <h2 class="text-align-center">Plan the perfect date<br>- together</h2>
+        </div>
 
-      <div class="desc-box row">
-        <img src="/assets/hytch-points.png" alt="hytch_points">
-        <p>A Hytch is two places or events in London that go together to make the perfect date.</p>
-      </div>
+        <div class="desc-box">
+          <img src="/assets/hytch_points_192x192.png" alt="hytch_points">
+          <p>A Hytch is two places or events in London that go together to make the perfect date.</p>
+        </div>
 
-      <ol>
-        <li>Choose an area of London</li>
-        <li>Pick 1 or 2 of your fave Hytches</li>
-        <li>Share your choice with your date or choose on together</li>
-      </ol>
+        <ul>
+          <li><p>🗺 Choose an area of London</p></li>
+          <li><p>🤔 Pick 1 or 2 of your fave Hytches</p></li>
+          <li><p>😻 Share your choice with your date or choose one together</p></li>
+        </ul>
 
-      <form class="area-form" action="/dates" method="get">
-        <select class="area-select" name="area_id">
-          <option value="1">North</option>
-          <option value="2">East</option>
-          <option value="3">South</option>
-          <option value="4">West</option>
+        <select id="region-selector" class="area-select" name="area_id">
+          <option value="north">North</option>
+          <option value="east">East</option>
+          <option value="south">South</option>
+          <option value=west>West</option>
+          <option value="central">Central</option>
         </select>
-        <br><br>
-        <button type="submit">Let's do it!</button>
-      </form>
+        <button id="region-submit">Let's do it!</button>
+      </div>
     </section>
 
     <section id="dates" class="route">
-      <div class="section-header">
+      <div class="section-header align-center">
         <p id="region-text" class="align-left"></p>
         <p class="align-left"><strong>Choose at least two:</strong></p>
       </div>
 
-      <ul id="dates-list"></ul>
+      <div class="section-content align-center spaced">
+        <ul id="hytches-list"></ul>
 
-      <div id="date-share-div">
-        <button id="dates-share-button">Share with bae</button>
+        <div id="hytch-share-div">
+          <button id="hytch-share-button">SHARE WITH BAE</button>
+        </div>
       </div>
     </section>
 
+    <section id="404" class="route">
+      <div class="app-title-text align-center">
+        <h1 class="app-title">Hytch</h1>
+        <h2 class="text-align-center">Plan the perfect date<br>- together</h2>
+      </div>
+      <h1>404: Page not found</h1>
+    </section>
     <!-- SCRIPTS -->
     <script src="/js/state.js" type="module"></script>
     <script src="/js/router.js" type="module"></script>
+    <script src="/js/home.js" type="module"></script>
     <script src="/js/dates.js" type="module"></script>
   </body>
 </html>

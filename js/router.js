@@ -1,4 +1,4 @@
-import { createState, updateState, getState } from "/js/state.js"
+import { setState, getState } from "/js/state.js"
 import { setupDates } from "/js/dates.js"
 
 // define the routes inside an object called routes and assign each route it's content div
@@ -10,9 +10,39 @@ var routes = [
     setup: null
   },
   {
-    pathname: "/dates",
+    pathname: "/hytches",
     div: document.getElementById("dates"),
     setup: setupDates
+  },
+  {
+    pathname: "/north",
+    div: document.getElementById("dates"),
+    setup: setupDates
+  },
+  {
+    pathname: "/east",
+    div: document.getElementById("dates"),
+    setup: setupDates
+  },
+  {
+    pathname: "/south",
+    div: document.getElementById("dates"),
+    setup: setupDates
+  },
+  {
+    pathname: "/west",
+    div: document.getElementById("dates"),
+    setup: setupDates
+  },
+  {
+    pathname: "/central",
+    div: document.getElementById("dates"),
+    setup: setupDates
+  },
+  {
+    pathname: "/404",
+    div: document.getElementById("404"),
+    setup: null
   }
 ]
 
@@ -25,27 +55,17 @@ function getPathname() {
     pathname = pathname.substring(0, pathname.indexOf('/'))
     pathname = "/" + pathname
   }
+
+  // store pathname in module scope
+  setState("pathname", pathname)
+
   return pathname
 }
 
 function storeParams () {
   let params = (new URL(document.location)).searchParams
-
   params.forEach((value, key) => {
-
-    if (getState(key)) {
-      updateState({
-        _var: key,
-        value: value,
-        listeners: []
-      })
-    } else {
-      createState({
-        _var: key,
-        value: value,
-        listeners: []
-      })
-    }
+    setState(key, value)
   })
 }
 

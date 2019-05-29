@@ -5,22 +5,11 @@
 var states = []
 
 function createState (state) {
-  if (state._var == null || state.value == null || state.listeners == null) return "incorrect state object sent to createState"
+  if (state._var == null || state.value == null || state.listeners == null) return false
 
   states.push(state)
   updateListeners()
-  return states
-}
-
-function updateState (newState) {
-  if (newState._var == null || newState.value == null || newState.listeners == null) return "incorrect state object sent to updateState"
-
-  let state = states.find(state => state._var === state._var)
-  if (!state) return false
-
-  state = newState
-  updateListeners()
-  return states
+  return state
 }
 
 function deleteState (targetState) {
@@ -51,13 +40,21 @@ function updateListeners (_var) {
   }
 }
 
-function setState (_var, value) {
+function setState (_var, value, listeners) {
   let state = states.find(state => state._var === _var)
-  if (!state) return false
+  if (!state) {
+    return(createState({
+      _var: _var,
+      value: value,
+      listeners: listeners || []
+    }))
+  }
 
+  state._var = _var
   state.value = value
+  if (listeners) state.listeners = listeners
   updateListeners(_var)
-  return state.value
+  return state
 }
 
 function getState (_var) {
@@ -69,4 +66,4 @@ function getState (_var) {
 
 updateListeners()
 
-export { createState, updateState, deleteState, setState, getState }
+export { setState, getState, deleteState }
