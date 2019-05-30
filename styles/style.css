@@ -27,7 +27,7 @@ section { height: 100%; flex-direction: column; }
 #home { width: 100%; height: 100%; justify-content: center; }
 #home .section-content { max-height: 100vw; }
 #home ul { padding: 0 10em; }
-.app-title-text { flex-direction: column; margin-bottom: 3rem; }
+.app-title-text { flex-direction: column; margin-bottom: 8rem; }
 .app-title { text-decoration: underline; text-decoration-color: #ef5350; }
 .desc-box { align-items: center; max-width: 800px; color: white; border-radius: 1rem; padding: 1rem; background-color: #ef5350; }
 .desc-box img { padding: 1rem; width: 5rem; }
