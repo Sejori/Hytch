@@ -1,19 +1,20 @@
 /* HTML Elements */
-html, body { margin: 0; padding: 0; font-family: sans-serif; color: #424242; }
+html, body { width: 100%; height: 100%; margin: 0; padding: 0; font-family: sans-serif; color: #424242; }
 div { display: flex; }
 ul { margin: 0; padding: 0px; list-style-type: none; }
 h1 { font-size: 3.5rem; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 { font-size: 1.3rem; } h1,h2,h3,h4 { margin: 0.25rem; }
-p { font-size: 1.2rem; }
+p { font-size: 1.2rem; margin: 1rem; }
 form { display: flex; flex-direction: column; justify-content: space-between; }
 select { font-size: 1.2rem; }
-button { font-size: 1.5rem; border: none; border-radius: 1rem; background-color: #ef5350; color: white; margin: 1rem; padding: 0.8rem; box-shadow: 0px 2px 2px #777; }
+button { font-size: 1.2rem; border: none; border-radius: 1rem; background-color: #ef5350; color: white; margin: 1rem; padding: 0.8rem; box-shadow: 0px 2px 2px #777; }
 
 /* Layouts */
 section { height: 100%; flex-direction: column; }
-.section-header { padding: 2rem; padding-bottom: 0; flex-grow: 0; flex-direction: column; }
-.section-content { padding: 2rem; flex-direction: column; flex-grow: 1; }
+.section-header { padding: 1rem; padding-bottom: 0; flex-grow: 0; flex-direction: column; }
+.section-content { padding: 1rem; flex-direction: column; flex-grow: 1; }
 .spaced { justify-content: space-between; }
 .route { display: none; }
+.container { max-width: 800px; }
 
 /* Alignments */
 .align-center { align-items: center; }
@@ -25,35 +26,36 @@ section { height: 100%; flex-direction: column; }
 
 /* sections */
 #home { width: 100%; height: 100%; justify-content: center; }
-#home .section-content { max-height: 100vw; }
-#home ul { margin: 1rem 0; }
+#home .section-content { flex-grow: 0; }
+#home ul { margin: 3rem 0; }
 .app-title-text { flex-direction: column; margin-bottom: 2rem; }
 .app-title { text-decoration: underline; text-decoration-color: #ef5350; }
 .desc-box { align-items: center; max-width: 1000px; color: white; border-radius: 1rem; padding: 0.8rem; background-color: #ef5350; }
-.desc-box img { padding: 1rem; width: 4rem; }
-.area-select { font-size: 2rem; margin: 1rem; }
+.desc-box img { margin-right: 1rem; width: 4rem; }
+.area-select { font-size: 1rem; margin: 1rem; }
 
 #dates ul { width: 100%; border-bottom: solid; }
 #dates li { width: 100%; display: flex; margin-bottom: 2rem; border-top: solid; padding-top: 2rem; }
 #dates input { transform: scale(2); }
-#region-text { display: none; }
+#region-text { display: none; text-align: center; }
 .hytch-checkbox-div { align-items: flex-start; padding-top: 4em; padding-right: 2em; }
 .hytch-content { display: flex; flex-direction: column; flex-grow: 1; }
 .hytch-title-text { flex-direction: column; }
-.hytch-desc { margin-top: 0.25rem; }
-.hytch-expand-button { margin-left: auto; width: 6rem; color: #424242; }
+.hytch-desc { margin-top: 0.25rem; margin-left: 0.25rem; }
+.hytch-expand-button { margin-left: auto; width: 3rem; color: #424242; }
 .hytch-dates { flex-direction: column; }
 .dates-div { flex-direction: column; margin-top: 1rem; }
-.date-div { flex-direction: column; }
-.date-emoji { z-index: 100; height: 8rem; width: 8rem; justify-content: center; align-items: center; background-color: white; border-radius: 50%; margin: 0; margin-left: -2rem; margin-bottom: -5rem; }
-.date-emoji p { font-size: 5rem; }
+.date-div { flex-direction: column; max-width: 400px; margin: auto; }
+.date-div p { margin-left: 0; }
+.date-emoji { z-index: 100; height: 4rem; width: 4rem; justify-content: center; align-items: center; background-color: white; border-radius: 50%; margin: 0; margin-left: -1rem; margin-bottom: -3rem; }
+.date-emoji p { margin: 0; font-size: 2rem; }
 .date-div img { width: 100%; border-radius: 1rem; }
 .date-min-price { margin: 0; margin-top: 1rem; margin-right: 1rem; font-style: italic; text-align: right; }
-.date-div a { font-size: 2rem; }
-.date-address { margin: 0; margin-bottom: 1rem; }
-.travel-div { margin: 2rem; justify-content: center; align-items: center; }
-.travel-emoji { color: #ef5350; font-size: 5rem; justify-content: center; align-items: center; margin: 1rem; }
-.travel-text { font-size: 3rem; text-decoration: underline; text-decoration-color: #ef5350; }
+.date-div a { font-size: 1rem; }
+.date-address { font-size: 1rem; margin: 0; margin-bottom: 1rem; }
+.travel-div { max-width: 400px; margin: 1rem auto; justify-content: flex-start; align-items: center; }
+.travel-emoji { color: #ef5350; font-size: 1.5rem; justify-content: center; align-items: center; margin: 0.2rem; }
+.travel-text { font-size: 1.5rem; text-decoration: underline; text-decoration-color: #ef5350; }
 #hytch-share-div { margin-top: 2em; }
 
 [id="404"] { justify-content: center; align-items: center; }

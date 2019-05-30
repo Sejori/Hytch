@@ -31,7 +31,7 @@ function dateBuilder(date) {
   dateMinPrice.textContent = "from £" + date.lowest_price
   dateMinPrice.className = "date-min-price"
 
-  let dateTitle = document.createElement("h2")
+  let dateTitle = document.createElement("h3")
   dateTitle.textContent = date.title
 
   let dateLink = document.createElement("a")
@@ -114,7 +114,7 @@ function hytchBuilder(hytch) {
   hytchExpandButton.className = "hytch-expand-button"
   hytchExpandButton.addEventListener("click", toggleHytchExpand)
 
-  let hytchTitle = document.createElement("h2")
+  let hytchTitle = document.createElement("h3")
   hytchTitle.textContent = hytch.title
   let hytchDesc = document.createElement("p")
   hytchDesc.className = "hytch-desc"
@@ -123,8 +123,8 @@ function hytchBuilder(hytch) {
   let hytchDates = document.createElement("div")
   hytchDates.className = "hytch-dates"
 
-  let hytchDate1 = document.createElement("h3")
-  let hytchDate2 = document.createElement("h3")
+  let hytchDate1 = document.createElement("span")
+  let hytchDate2 = document.createElement("span")
   hytchDate1.textContent = hytch.activities[0].emoji + " " + "Start at " + hytch.activities[0].title
   hytchDate2.textContent = hytch.activities[1].emoji + " " + "End at " + hytch.activities[1].title
 
