@@ -29,7 +29,7 @@ section { height: 100%; flex-direction: column; }
 #home ul { padding: 0 10em; }
 .app-title-text { flex-direction: column; margin-bottom: 8rem; }
 .app-title { text-decoration: underline; text-decoration-color: #ef5350; }
-.desc-box { align-items: center; max-width: 800px; color: white; border-radius: 1rem; padding: 1rem; background-color: #ef5350; }
+.desc-box { align-items: center; max-width: 800px; color: white; border-radius: 1rem; padding: 2rem; background-color: #ef5350; }
 .desc-box img { padding: 1rem; width: 5rem; }
 .area-select { font-size: 2rem; margin: 4rem; }
 
