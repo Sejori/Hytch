@@ -2,6 +2,20 @@ import { getState, setState } from "/js/state.js"
 
 function toggleSelectDate(event) {
   let selectedDates = getState("selectedDates")
+  let pathname = getState("pathname")
+
+  if (pathname === "/hytches") {
+    // uncheck all checkboxes before checking clicked
+    let inputs = document.getElementsByTagName("input")
+    Array.from(inputs).forEach(input => input.checked = false)
+    event.target.checked = true
+    selectedDates = [
+      event.target.value
+    ]
+    setState("selectedDates", selectedDates)
+    return
+  }
+
   if (!selectedDates) {
     selectedDates = [
       event.target.value
@@ -28,6 +42,7 @@ function toggleHytchExpand(event) {
 }
 
 function dateBuilder(date) {
+
   let dateEmojiDiv = document.createElement("div")
   let dateEmoji = document.createElement("p")
   dateEmoji.textContent = date.emoji
@@ -157,6 +172,12 @@ function hytchBuilder(hytch) {
 
   hytchLi.appendChild(checkboxDiv)
   hytchLi.appendChild(contentDiv)
+
+  console.log("sponsored " + hytch.sponsored)
+  if (hytch.sponsored) {
+    hytchLi.sponsored = true
+    hytchLi.classList.toggle("sponsored")
+  }
 
   return hytchLi
 }
