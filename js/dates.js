@@ -2,28 +2,65 @@ import { setState, getState } from "/js/state.js"
 import { hytchBuilder } from "/js/hytchDisplay.js"
 
 function shareDates() {
-  let selectedDates = getState("selectedDates")
-  try {
-    var sharePromise = window.navigator.share(selectedDates)
-  } catch {
-    let dateLink = "https://hytch.netlify.com/hytches?ids=" + selectedDates
-    navigator.clipboard.writeText(dateLink).then(function() {
-      /* clipboard successfully set */
-      alert("Link copied to clipboard!")
-    }, function() {
-      /* clipboard write failed */
-      alert("Link copy failed. Copy link displayed above share button.")
-      let linkText = document.createElement("p")
-      linkText.textContent = dateLink
-      document.querySelector("#date-share-div").appendChild(linkText)
-    })
+  if (getState("pathname") === "/hytch") {
+    let selectedDate = getState("selectedDate")
+    let dateLink = "https://hytch-99f8e2.netlify.live/hytch?ids=" + selectedDate
+    try {
+      var sharePromise = window.navigator.share("I choose '" + + "' 🎉 Here it is:" + dateLink)
+    } catch {
+      navigator.clipboard.writeText(dateLink).then(function() {
+        /* clipboard successfully set */
+        alert("Link copied to clipboard!")
+      }, function() {
+        /* clipboard write failed */
+        alert("Link copy failed. Copy link displayed above share button.")
+        let linkText = document.createElement("p")
+        linkText.textContent = dateLink
+        document.querySelector("#date-share-div").appendChild(linkText)
+      })
+    }
+    return
   }
+
+  if (getState("pathname") !== "/hytches") {
+    let selectedDates = getState("selectedDates")
+    let dateLink = "https://hytch-99f8e2.netlify.live/hytches?ids=" + selectedDates
+    try {
+      var sharePromise = window.navigator.share("I've shortlisted some great date ideas on Hytch. Click the link to choose which one you want to go on: " + dateLink)
+    } catch {
+      navigator.clipboard.writeText(dateLink).then(function() {
+        /* clipboard successfully set */
+        alert("Link copied to clipboard!")
+      }, function() {
+        /* clipboard write failed */
+        alert("Link copy failed. Copy link displayed above share button.")
+        let linkText = document.createElement("p")
+        linkText.textContent = dateLink
+        document.querySelector("#date-share-div").appendChild(linkText)
+      })
+    }
+    return
+  }
+
+  let selectedDates = getState("selectedDates")
+  window.location.assign("https://hytch-99f8e2.netlify.live/hytch?ids=" + selectedDates)
+  return
+}
+
+function displayCongrats() {
+  document.querySelector("#congrats-div").style.display = "flex"
+}
+
+function displayConfirm() {
+  let shareButton = document.querySelector("#hytch-share-button")
+  shareButton.textContent = "SEND CHOICE BACK"
 }
 
 function displayRegion(region) {
-  var regionText = document.querySelector("#region-text")
+  let regionDiv = document.querySelector("#region-div")
+  let regionText = document.querySelector("#region-text")
   regionText.textContent = "Explore today's choices in " + region + " London."
-  regionText.style.display = "flex"
+  regionDiv.style.display = "flex"
 }
 
 function displayDates (hytches) {
@@ -34,7 +71,8 @@ function displayDates (hytches) {
 }
 
 async function getDates () {
-  let region = getState("pathname").substring(1)
+  let pathname = getState("pathname")
+  let region = pathname.substring(1)
   let dateIds = getState("ids")
 
   let regions = getState("regions")
@@ -48,6 +86,7 @@ async function getDates () {
       let date = await response.json()
       dates.push(date[0])
     }
+    if (pathname !== "/hytch") displayConfirm()
     return dates
   }
 
@@ -64,8 +103,14 @@ async function getDates () {
 }
 
 async function setupDates () {
-  var dates = await getDates()
+  let dates = await getDates()
   displayDates(dates)
+  if (getState("pathname") === "/hytch") {
+    setState("selectedDate", dates[0].id)
+    document.querySelector(".hytch-checkbox-div").style.display = "none"
+    displayCongrats()
+  }
+  return
 }
 
 let regions = [

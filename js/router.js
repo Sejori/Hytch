@@ -10,6 +10,11 @@ var routes = [
     setup: null
   },
   {
+    pathname: "/hytch",
+    div: document.getElementById("dates"),
+    setup: setupDates
+  },
+  {
     pathname: "/hytches",
     div: document.getElementById("dates"),
     setup: setupDates

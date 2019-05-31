@@ -1,7 +1,20 @@
 import { getState, setState } from "/js/state.js"
 
 function toggleSelectDate(event) {
-  setState("selectedDates", event.target.value)
+  let selectedDates = getState("selectedDates")
+  if (!selectedDates) {
+    selectedDates = [
+      event.target.value
+    ]
+    return setState("selectedDates", selectedDates)
+  }
+  if (selectedDates.find(date => date === event.target.value)) {
+    selectedDates.splice(selectedDates.indexOf(event.target.value), 1)
+    return setState("selectedDates", selectedDates)
+  }
+
+  selectedDates.push(event.target.value)
+  setState("selectedDates", selectedDates)
 }
 
 function toggleHytchExpand(event) {
@@ -15,8 +28,6 @@ function toggleHytchExpand(event) {
 }
 
 function dateBuilder(date) {
-  console.log(date)
-
   let dateEmojiDiv = document.createElement("div")
   let dateEmoji = document.createElement("p")
   dateEmoji.textContent = date.emoji
@@ -24,8 +35,8 @@ function dateBuilder(date) {
   dateEmojiDiv.appendChild(dateEmoji)
 
   let dateImg = document.createElement("img")
-  dateImg.src = "https://hytch-cms.herokuapp.com" + date.image[0].url
-  dateImg.alt = date.image[0].name
+  dateImg.src = date.image_link
+  dateImg.alt = "date"
 
   let dateMinPrice = document.createElement("p")
   dateMinPrice.textContent = "from £" + date.lowest_price
@@ -35,15 +46,18 @@ function dateBuilder(date) {
   dateTitle.textContent = date.title
 
   let dateLink = document.createElement("a")
-  dateLink.href = date.link
+  dateLink.href = "https://" + date.link
   dateLink.textContent = date.link
+  dateLink.target = "_blank"
 
   let dateDescription = document.createElement("p")
   dateDescription.textContent = date.description
 
-  let dateAddress = document.createElement("p")
+  let dateAddress = document.createElement("a")
   dateAddress.className = "date-address"
   dateAddress.textContent = date.address
+  dateAddress.href = date.address_link
+  dateAddress.target = "_blank"
 
   let dateDiv = document.createElement("div")
   dateDiv.className = "date-div"
@@ -64,11 +78,11 @@ function travelBuilder(emoji, time, type) {
   travelDiv.className = "travel-div"
 
   let travelEmoji = document.createElement("p")
-  travelEmoji.textContent = "↓" + emoji
+  travelEmoji.textContent = "⇣"
   travelEmoji.className = "travel-emoji"
 
   let travelText = document.createElement("p")
-  travelText.textContent = time + " mins by " + type
+  travelText.textContent = emoji + " " + time + " mins by " + type
   travelText.className = "travel-text"
 
   travelDiv.appendChild(travelEmoji)
@@ -78,7 +92,6 @@ function travelBuilder(emoji, time, type) {
 }
 
 function hytchBuilder(hytch) {
-  console.log(hytch)
 
   // build dates
   let date1Div = dateBuilder(hytch.activities[0])
