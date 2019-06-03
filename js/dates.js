@@ -2,58 +2,73 @@ import { setState, getState } from "/js/state.js"
 import { hytchBuilder } from "/js/hytchDisplay.js"
 
 function shareDates() {
-  let pathname = getState("pathname")
-  if ((pathname === "/north" || pathname === "/east" || pathname === "/south" || pathname === "/west" || pathname === "/central") && getState("selectedDates").length < 2) {
-    alert("You must select more than one date to share with your partner!")
-    return
-  }
-
   if (getState("pathname") === "/hytch") {
     let selectedDate = getState("selectedDate")
-    let dateLink = "https://hytch.netlify.com/hytch?ids=" + selectedDate
-    try {
-      var sharePromise = window.navigator.share("I choose '" + + "' 🎉 Here it is:" + dateLink)
-    } catch {
-      navigator.clipboard.writeText(dateLink).then(function() {
-        /* clipboard successfully set */
-        alert("Link copied to clipboard!")
-      }, function() {
-        /* clipboard write failed */
-        alert("Link copy failed. Copy link displayed above share button.")
-        let linkText = document.createElement("p")
-        linkText.textContent = dateLink
-        document.querySelector("#date-share-div").appendChild(linkText)
-      })
+
+    if (!selectedDate) {
+      alert("Select a date to confirm!")
+      return
     }
-    return
+
+    let dateLink = "https://hytch.netlify.com/hytch?ids=" + selectedDate
+    let shareObj = {
+      title: document.title,
+      text: "Date confirmed! 🎉 Click to see what I chose.",
+      url: dateLink
+    }
+
+    if (navigator.share !== undefined) {
+      navigator.share(shareObj)
+        .catch(err => console.log(err))
+      return
+    }
+
+    if (navigator.clipboard.writeText !== undefined) {
+      navigator.clipboard.writeText(dateLink).then(function() {
+        alert("Link copied to clipboard!")
+      })
+      return
+    }
+
+    let linkText = document.createElement("p")
+    linkText.textContent = dateLink
+    document.querySelector("#date-share-div").appendChild(linkText)
   }
 
   if (getState("pathname") !== "/hytches") {
     let selectedDates = getState("selectedDates")
-    let dateLink = "https://hytch.netlify.com/hytches?ids=" + selectedDates
-    try {
-      var sharePromise = window.navigator.share("I've shortlisted some great date ideas on Hytch. Click the link to choose which one you want to go on: " + dateLink)
-    } catch {
-      navigator.clipboard.writeText(dateLink).then(function() {
-        /* clipboard successfully set */
-        alert("Link copied to clipboard!")
-      }, function() {
-        /* clipboard write failed */
-        alert("Link copy failed. Copy link displayed above share button.")
-        let linkText = document.createElement("p")
-        linkText.textContent = dateLink
-        document.querySelector("#date-share-div").appendChild(linkText)
-      })
+    if (!selectedDates || selectedDates.length < 2) {
+      alert("Pick at least 2 Hytches to share with your partner!")
+      return
     }
+
+    let dateLink = "https://hytch.netlify.com/hytches?ids=" + selectedDates
+    let shareObj = {
+      title: document.title,
+      text: "I've shortlisted some great date ideas on Hytch. Click the link to see what I chose.",
+      url: dateLink
+    }
+
+    if (navigator.share !== undefined) {
+      navigator.share(shareObj)
+        .catch(err => console.log(err))
+      return
+    }
+
+    if (navigator.clipboard.writeText !== undefined) {
+      navigator.clipboard.writeText(dateLink).then(function() {
+        alert("Link copied to clipboard!")
+      })
+      return
+    }
+
+    let linkText = document.createElement("p")
+    linkText.textContent = dateLink
+    document.querySelector("#date-share-div").appendChild(linkText)
     return
   }
 
-  let selectedDates = getState("selectedDates")
-  if (!selectedDates) {
-    alert("Select a date to confirm!")
-    return
-  }
-  window.location.assign("https://hytch.netlify.com/hytch?ids=" + selectedDates)
+  window.location.assign("https://hytch.netlify.com/hytch?ids=" + getState("selectedDates"))
   return
 }
 
@@ -62,6 +77,7 @@ function displayCongrats() {
 }
 
 function displayConfirm() {
+  document.querySelector("#choose-div").style.display = "flex"
   let shareButton = document.querySelector("#hytch-share-button")
   shareButton.textContent = "CHOOSE HYTCH"
 }

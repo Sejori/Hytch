@@ -173,7 +173,6 @@ function hytchBuilder(hytch) {
   hytchLi.appendChild(checkboxDiv)
   hytchLi.appendChild(contentDiv)
 
-  console.log("sponsored " + hytch.sponsored)
   if (hytch.sponsored) {
     hytchLi.sponsored = true
     hytchLi.classList.toggle("sponsored")
