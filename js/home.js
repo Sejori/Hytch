@@ -4,4 +4,4 @@ function goToRegion() {
   document.location.assign('/' + region)
 }
 
-document.querySelector("#region-submit").addEventListener("click", goToRegion)
+Array.from(document.getElementsByClassName("region-submit")).forEach(button => button.addEventListener("click", goToRegion))

@@ -24,7 +24,7 @@
     <!-- Twitter Card data -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Hytch">
-    <meta name="twitter:description" content="Plan the perfect date - together. Hytch helps you and your partner find great date ideas in North, East, South, West or Central London, share them with each other and then decide on the perfect date!">
+    <meta name="twitter:description" content="Plan the perfect date - together. Hytch helps you and your partner find and decide on great dates in London!">
     <meta name="twitter:image" content="http://hytch.netlify.com/assets/android-chrome-192x192.png">
 
     <!-- Open Graph data -->
@@ -32,29 +32,21 @@
     <meta property="og:type" content="article" />
     <meta property="og:url" content="http://hytch.netlify.com/" />
     <meta property="og:image" content="http://hytch.netlify.com/assets/android-chrome-192x192.png" />
-    <meta property="og:description" content="Plan the perfect date - together. Hytch helps you and your partner find great date ideas in North, East, South, West or Central London, share them with each other and then decide on the perfect date!" />
+    <meta property="og:description" content="Plan the perfect date - together. Hytch helps you and your partner find and decide on great dates in London!" />
     <meta property="og:site_name" content="Hytch" />
   </head>
   <body>
+    <a id="home-button" href="https://hytch.netlify.com/">
+      <img src="/assets/hytch_points_192x192.png" alt="hytch_points">
+      Hytch
+    </a>
     <section id="home" class="route">
       <div class="section-content align-center spaced">
         <div class="app-title-text align-center">
-          <h1 class="app-title">Hytch</h1>
-          <h3 class="text-align-center">Plan the perfect date<br>- together</h3>
+          <h1 class="text-align-center">Plan the perfect date, together.</h1>
         </div>
 
-        <div class="desc-box">
-          <img src="/assets/hytch_points_192x192.png" alt="hytch_points">
-          <span>A Hytch is two places or events in London that go together to make the perfect date.</span>
-        </div>
-
-        <ul>
-          <li><p>🗺 &nbsp;Choose an area of London</p></li>
-          <li><p>🤔 &nbsp;Pick 1 or 2 of your fave Hytches</p></li>
-          <li><p>😻 &nbsp;Share your choice with your date or choose one together</p></li>
-        </ul>
-
-        <label for="region-selector">Select region of London:</label>
+        <label for="region-selector">🎡 Choose an area of London to get started...</label>
         <select id="region-selector" class="area-select" name="area_id">
           <option value="north">North</option>
           <option value="east">East</option>
@@ -62,16 +54,43 @@
           <option value=west>West</option>
           <option value="central">Central</option>
         </select>
-        <button id="region-submit">Let's do it!</button>
+        <button class="region-submit">GET STARTED</button>
+
+        <img class="section-gif" src="https://media.giphy.com/media/RtCjVyAz5ViU0/giphy.gif" alt="romance-gif">
+
+        <div class="desc-box light-shadow">
+          <h3>🤔 What's a Hytch?</h3>
+          <p class="small-text">Two specially curated places or events in London that go together perfectly, like fish and chips, or Will Smith and Summertime...</p>
+        </div>
+
+        <div class="how-it-works light-shadow">
+          <h3>How does it work?</h3>
+          <ul>
+            <li><p>🌃&nbsp;Simply pick an area of London</p></li>
+            <li><p>✅&nbsp;Pick a few dates you like...</p></li>
+            <li><p>📲&nbsp;Share your faves with your partner</p></li>
+            <li><p>🥰&nbsp;Let them pick your hot date!</p></li>
+          </ul>
+        </div>
+
+        <h3>Try something new...</h3>
+        <label for="region-selector">🎡 Choose an area of London to get started...</label>
+        <select id="region-selector" class="area-select" name="area_id">
+          <option value="north">North</option>
+          <option value="east">East</option>
+          <option value="south">South</option>
+          <option value=west>West</option>
+          <option value="central">Central</option>
+        </select>
+        <button class="region-submit">GET STARTED</button>
       </div>
     </section>
 
     <section id="dates" class="route">
       <div class="section-header align-center">
-        <a id="home-button" href="https://hytch-e52173.netlify.live/">< Home</a>
         <div id="region-div" class="vertical">
-          <p id="region-emoji">🌳</p>
-          <h4 id="region-text" class="align-left"></h4>
+          <p id="region-emoji"></p>
+          <h4 id="region-text" class="text-align-center"></h4>
           <p class="text-align-center small-font">(Pick at least two to share).</p>
         </div>
         <div id="choose-div" class="vertical">
@@ -87,7 +106,7 @@
         <ul id="hytches-list" class="container"></ul>
 
         <div id="hytch-share-div">
-          <button id="hytch-share-button">SHARE WITH BAE</button>
+          <button id="hytch-share-button">SHARE MY HYTCHES</button>
         </div>
       </div>
     </section>
@@ -106,5 +125,6 @@
     <script src="/js/home.js" type="module"></script>
     <script src="/js/dates.js" type="module"></script>
     <script src="/js/hytchDisplay.js" type="module"></script>
+    <script src="/js/confetti.js" type="module"></script>
   </body>
 </html>

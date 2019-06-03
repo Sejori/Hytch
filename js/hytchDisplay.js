@@ -34,19 +34,26 @@ function toggleSelectDate(event) {
 function toggleHytchExpand(event) {
   let dateInfo = event.target.parentElement.parentElement.getElementsByClassName("dates-div")[0]
   if (dateInfo.style.display === "none") {
+    event.target.src = "/assets/collapse.svg"
     dateInfo.style.display = "flex"
     return
   }
+  event.target.src = "/assets/expand.svg"
   dateInfo.style.display = "none"
   return
 }
 
-function dateBuilder(date) {
+function dateBuilder(date, sponsored) {
 
   let dateEmojiDiv = document.createElement("div")
   let dateEmoji = document.createElement("p")
   dateEmoji.textContent = date.emoji
   dateEmojiDiv.className = "date-emoji"
+  if (sponsored) {
+    dateEmojiDiv.classList.toggle("sponsored")
+  } else {
+    dateEmojiDiv.classList.toggle("default")
+  }
   dateEmojiDiv.appendChild(dateEmoji)
 
   let dateImg = document.createElement("img")
@@ -88,19 +95,26 @@ function dateBuilder(date) {
   return dateDiv
 }
 
-function travelBuilder(emoji, time, type) {
+function travelBuilder(emoji, time, type, sponsored) {
   let travelDiv = document.createElement("div")
   travelDiv.className = "travel-div"
 
+  let travelEmojiDiv = document.createElement("div")
   let travelEmoji = document.createElement("p")
-  travelEmoji.textContent = "⇣"
-  travelEmoji.className = "travel-emoji"
+  travelEmojiDiv.className = "travel-emoji"
+  travelEmoji.textContent = emoji
+  if (sponsored) {
+    travelEmojiDiv.classList.toggle("sponsored")
+  } else {
+    travelEmojiDiv.classList.toggle("default")
+  }
+  travelEmojiDiv.appendChild(travelEmoji)
 
   let travelText = document.createElement("p")
-  travelText.textContent = emoji + " " + time + " mins by " + type
+  travelText.textContent = time + " mins by " + type
   travelText.className = "travel-text"
 
-  travelDiv.appendChild(travelEmoji)
+  travelDiv.appendChild(travelEmojiDiv)
   travelDiv.appendChild(travelText)
 
   return travelDiv
@@ -109,9 +123,9 @@ function travelBuilder(emoji, time, type) {
 function hytchBuilder(hytch) {
 
   // build dates
-  let date1Div = dateBuilder(hytch.activities[0])
-  let date2Div = dateBuilder(hytch.activities[1])
-  let travelDiv = travelBuilder(hytch.travel_emoji, hytch.travel_time, hytch.travel_type)
+  let date1Div = dateBuilder(hytch.activities[0], hytch.sponsored)
+  let date2Div = dateBuilder(hytch.activities[1], hytch.sponsored)
+  let travelDiv = travelBuilder(hytch.travel_emoji, hytch.travel_time, hytch.travel_type, hytch.sponsored)
 
   let datesDiv = document.createElement("div")
   datesDiv.appendChild(date1Div)
@@ -119,6 +133,11 @@ function hytchBuilder(hytch) {
   datesDiv.appendChild(date2Div)
   datesDiv.style.display = "none"
   datesDiv.className = "dates-div"
+  if (hytch.sponsored) {
+    datesDiv.classList.toggle("sponsored")
+  } else {
+    datesDiv.classList.toggle("default")
+  }
 
   // create list item for date and append to dates-list
   let hytchLi = document.createElement("li")
@@ -157,6 +176,18 @@ function hytchBuilder(hytch) {
   hytchDate2.textContent = hytch.activities[1].emoji + " " + "End at " + hytch.activities[1].title
 
   topContentText.appendChild(hytchTitle)
+
+  if (hytch.sponsored) {
+    hytchLi.sponsored = true
+    hytchLi.classList.toggle("sponsored")
+    let sponsoredText = document.createElement("p")
+    sponsoredText.className = "sponsored-hytch-text"
+    sponsoredText.textContent = "sponsored"
+    topContentText.appendChild(sponsoredText)
+  } else {
+    hytchLi.classList.toggle("default")
+  }
+
   topContentText.appendChild(hytchDesc)
 
   topContent.appendChild(topContentText)
@@ -172,11 +203,6 @@ function hytchBuilder(hytch) {
 
   hytchLi.appendChild(checkboxDiv)
   hytchLi.appendChild(contentDiv)
-
-  if (hytch.sponsored) {
-    hytchLi.sponsored = true
-    hytchLi.classList.toggle("sponsored")
-  }
 
   return hytchLi
 }

@@ -1,5 +1,6 @@
 import { setState, getState } from "/js/state.js"
 import { hytchBuilder } from "/js/hytchDisplay.js"
+import { startConfetti } from "/js/confetti.js"
 
 function shareDates() {
   if (getState("pathname") === "/hytch") {
@@ -10,7 +11,7 @@ function shareDates() {
       return
     }
 
-    let dateLink = "https://hytch.netlify.com/hytch?ids=" + selectedDate
+    let dateLink = "https://hytch-ff520c.netlify.live/hytch?ids=" + selectedDate
     let shareObj = {
       title: document.title,
       text: "Date confirmed! 🎉 Click to see what I chose.",
@@ -42,7 +43,7 @@ function shareDates() {
       return
     }
 
-    let dateLink = "https://hytch.netlify.com/hytches?ids=" + selectedDates
+    let dateLink = "https://hytch-ff520c.netlify.live/hytches?ids=" + selectedDates
     let shareObj = {
       title: document.title,
       text: "I've shortlisted some great date ideas on Hytch. Click the link to see what I chose.",
@@ -68,24 +69,36 @@ function shareDates() {
     return
   }
 
-  window.location.assign("https://hytch.netlify.com/hytch?ids=" + getState("selectedDates"))
+  window.location.assign("https://hytch-ff520c.netlify.live/hytch?ids=" + getState("selectedDates"))
   return
 }
 
 function displayCongrats() {
   document.querySelector("#congrats-div").style.display = "flex"
+  startConfetti()
 }
 
 function displayConfirm() {
   document.querySelector("#choose-div").style.display = "flex"
   let shareButton = document.querySelector("#hytch-share-button")
-  shareButton.textContent = "CHOOSE HYTCH"
+  shareButton.textContent = "CHOOSE OUR HYTCH"
 }
 
 function displayRegion(region) {
+  let regionEmojis = [
+    [ "north", "🎧" ],
+    [ "east", "💃" ],
+    [ "south", "🌳" ],
+    [ "west", "👠" ],
+    [ "central", "🎡" ]
+  ]
+
   let regionDiv = document.querySelector("#region-div")
+  let regionEmoji = document.querySelector("#region-emoji")
   let regionText = document.querySelector("#region-text")
+
   regionText.textContent = "Explore this week's choices in " + region.charAt(0).toUpperCase() + region.slice(1) + " London."
+  regionEmoji.textContent = regionEmojis.filter(regionEmoji => regionEmoji[0] === region)[0][1]
   regionDiv.style.display = "flex"
 }
 
