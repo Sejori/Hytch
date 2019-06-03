@@ -46,7 +46,7 @@ section { height: 100%; flex-direction: column; }
 .region-submit { margin-top: 0; }
 
 #dates ul { width: 100%; }
-#dates li { max-width: 100%; display: flex; margin-bottom: 1.5rem; padding: 1.5rem; box-shadow: 2px 2px 4px #999; }
+#dates li { max-width: 100%; border-width: 0.4rem; display: flex; margin-bottom: 1.5rem; padding: 1.5rem; box-shadow: 2px 2px 4px #999; }
 .default { border: solid; border-color: #ef5350; }
 .sponsored { border: solid; border-color: #f2c02b; }
 #dates input { transform: scale(2); }
@@ -54,7 +54,6 @@ section { height: 100%; flex-direction: column; }
 #region-emoji { text-align: center; font-size: 3rem; margin: 0; }
 #choose-div { display: none; }
 #congrats-div { display: none; }
-#congrats-div h2 { padding-bottom: 1rem; }
 .hytch-checkbox-div { align-items: flex-start; padding-top: 3em; padding-right: 1em; }
 .hytch-content { display: flex; flex-direction: column; flex-grow: 1; }
 .hytch-title-text { flex-direction: column; }
@@ -62,7 +61,7 @@ section { height: 100%; flex-direction: column; }
 .hytch-desc { margin-top: 0.25rem; margin-left: 0.25rem; }
 .hytch-expand-button { margin-left: auto; width: 3rem; color: #424242; }
 .hytch-dates { flex-direction: column; }
-.dates-div { flex-direction: column; margin-top: 2rem; margin-left: -1rem; border-top: none; border-right: none; border-bottom: none; }
+.dates-div { flex-direction: column; margin-top: 2rem; border-top: none; border-right: none; border-bottom: none; }
 .date-div { flex-direction: column; max-width: 400px; margin-left: 1rem; }
 .date-div h3 { margin: 0; margin-top: 1rem; }
 .date-div p { margin-left: 0; }
