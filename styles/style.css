@@ -14,7 +14,7 @@ section { height: 100%; flex-direction: column; }
 .section-content { padding: 0.5rem 1rem; flex-direction: column; flex-grow: 1; }
 .spaced { justify-content: space-between; }
 .route { display: none; }
-.container { max-width: 800px; }
+.container { max-width: 40rem; }
 .vertical { flex-direction: column; }
 
 /* Alignments */
@@ -62,7 +62,7 @@ section { height: 100%; flex-direction: column; }
 .hytch-expand-button { margin-left: auto; width: 3rem; color: #424242; }
 .hytch-dates { flex-direction: column; }
 .dates-div { flex-direction: column; margin-top: 2rem; border-top: none; border-right: none; border-bottom: none; }
-.date-div { flex-direction: column; max-width: 400px; margin-left: 1rem; }
+.date-div { flex-direction: column; margin-left: 1rem; }
 .date-div h3 { margin: 0; margin-top: 1rem; }
 .date-div p { margin-left: 0; }
 .date-emoji { z-index: 100; height: 2.5rem; width: 2.5rem; justify-content: center; align-items: center; background-color: white; border-radius: 50%; margin-left: -2.5rem; margin-bottom: -1.5rem; }

@@ -80,7 +80,7 @@ function displayCongrats() {
   confetti.start()
   setTimeout(function(){
     confetti.stop()
-  },2000)
+  }, 2000)
 }
 
 function displayConfirm() {
