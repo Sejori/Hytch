@@ -46,7 +46,7 @@ section { height: 100%; flex-direction: column; }
 .region-submit { margin-top: 0; }
 
 #dates ul { width: 100%; }
-#dates li { max-width: 100%; border-width: 0.4rem; display: flex; margin-bottom: 1.5rem; padding: 1.5rem; box-shadow: 2px 2px 4px #999; }
+#dates li { max-width: 100%; border-width: 0.3rem; display: flex; margin-bottom: 1.5rem; padding: 1.5rem; box-shadow: 2px 2px 4px #999; }
 .default { border: solid; border-color: #ef5350; }
 .sponsored { border: solid; border-color: #f2c02b; }
 #dates input { transform: scale(2); }
@@ -81,4 +81,4 @@ section { height: 100%; flex-direction: column; }
 #about-card p { width: 20rem; }
 #about-card a { color: #ef5350; text-decoration: none; }
 
-[id="404"] { justify-content: center; align-items: center; }
+[id="404"] { justify-content: center; align-items: center; text-align: center; }
