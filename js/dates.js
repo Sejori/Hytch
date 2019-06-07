@@ -1,6 +1,8 @@
 import { setState, getState } from "/js/state.js"
 import { hytchBuilder } from "/js/hytchDisplay.js"
 
+let hytchUrl = window.location.origin
+
 function shareDates() {
   if (getState("pathname") === "/hytch") {
     let selectedDate = getState("selectedDate")
@@ -10,7 +12,7 @@ function shareDates() {
       return
     }
 
-    let dateLink = "https://hytch.netlify.com/hytch?ids=" + selectedDate
+    let dateLink = hytchUrl + "/hytch?ids=" + selectedDate
     let shareObj = {
       title: document.title,
       text: "Date confirmed! 🎉 Click to see what I chose.",
@@ -42,7 +44,7 @@ function shareDates() {
       return
     }
 
-    let dateLink = "https://hytch.netlify.com/hytches?ids=" + selectedDates
+    let dateLink = hytchUrl + "/hytches?ids=" + selectedDates
     let shareObj = {
       title: document.title,
       text: "I've shortlisted some great date ideas on Hytch. Click the link to see what I chose.",
@@ -68,7 +70,7 @@ function shareDates() {
     return
   }
 
-  window.location.assign("https://hytch.netlify.com/hytch?ids=" + getState("selectedDates"))
+  window.location.assign(hytchUrl + "/hytch?ids=" + getState("selectedDates"))
   return
 }
 
