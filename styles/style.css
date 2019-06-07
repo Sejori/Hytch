@@ -3,7 +3,7 @@ html, body { height: 100%; width: 100%; margin: 0; padding: 0; font-family: sans
 div { display: flex; }
 ul { margin: 0; padding: 0px; list-style-type: none; }
 h1 { font-size: 2.5rem; color: #ef5350; } h2 { font-size: 2rem; } h3 { font-size: 1.5rem; } h4 { font-size: 1rem; } h1,h2,h3,h4 { margin: 0.25rem; letter-spacing: 0.1rem;}
-p { font-size: 0.8rem; margin: 0.5rem; }
+p { font-size: 1rem; margin: 0.5rem; }
 form { display: flex; flex-direction: column; justify-content: space-between; }
 select { font-size: 1.2rem; }
 button { font-size: 1rem; border: none; border-radius: 1rem; background-color: #ef5350; color: white; margin: 1rem; padding: 0.5rem 1rem; box-shadow: 0px 2px 2px #999; }
@@ -75,5 +75,10 @@ section { height: 100%; flex-direction: column; }
 .travel-emoji { width: 2.5rem; height: 2.5rem; background-color: white; border-radius: 50%; justify-content: center; align-items: center; }
 .travel-emoji p { font-size: 1.5rem; }
 .travel-text { font-size: 1rem; }
+
+#about-card { align-items: center; text-align: center; max-width: 40rem; flex-direction: column; align-items: center; border: solid; margin: 1rem; padding: 1rem; border-color: #ef5350; }
+#about-card img { width: 15rem; margin: 1rem; }
+#about-card p { width: 20rem; }
+#about-card a { color: #ef5350; text-decoration: none; }
 
 [id="404"] { justify-content: center; align-items: center; }

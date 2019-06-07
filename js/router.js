@@ -45,6 +45,11 @@ var routes = [
     setup: setupDates
   },
   {
+    pathname: "/about",
+    div: document.getElementById("about"),
+    setup: null
+  },
+  {
     pathname: "/404",
     div: document.getElementById("404"),
     setup: null
