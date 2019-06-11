@@ -5,14 +5,20 @@ let hytchUrl = window.location.origin
 
 function shareDates() {
   if (getState("pathname") === "/hytches") {
-    let selectedDate = getState("selectedDate")
+    let selectedDates = getState("selectedDates")
 
-    if (!selectedDate) {
-      alert("Select a date to confirm!")
+    if (!selectedDates) {
+      alert("Select a Hytch to confirm!")
       return
     }
 
-    let dateLink = hytchUrl + "/hytch?ids=" + selectedDate
+    window.location.assign(hytchUrl + "/hytch?ids=" + getState("selectedDates"))
+    return
+  }
+
+  if (getState("pathname") === "/hytch") {
+    let selectedDates = getState("selectedDates")
+    let dateLink = hytchUrl + "/hytch?ids=" + selectedDates
     let shareObj = {
       title: document.title,
       text: "Date confirmed! 🎉 Click to see what I chose.",
@@ -22,17 +28,21 @@ function shareDates() {
     if (navigator.share !== undefined) {
       navigator.share(shareObj)
         .catch(err => console.log(err))
+      return
     }
 
     if (navigator.clipboard.writeText !== undefined) {
       navigator.clipboard.writeText(dateLink).then(function() {
         alert("Link copied to clipboard!")
+        return
       })
+    } else {
+      let linkText = document.createElement("p")
+      linkText.textContent = dateLink
+      document.querySelector("#hytch-share-div").appendChild(linkText)
+      return
     }
-
-    let linkText = document.createElement("p")
-    linkText.textContent = dateLink
-    document.querySelector("#date-share-div").appendChild(linkText)
+    return
   }
 
   if (getState("pathname") !== "/hytches") {
@@ -67,9 +77,6 @@ function shareDates() {
     document.querySelector("#date-share-div").appendChild(linkText)
     return
   }
-
-  window.location.assign(hytchUrl + "/hytch?ids=" + getState("selectedDates"))
-  return
 }
 
 function displayCongrats() {
