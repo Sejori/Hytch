@@ -4,7 +4,7 @@ import { hytchBuilder } from "/js/hytchDisplay.js"
 let hytchUrl = window.location.origin
 
 function shareDates() {
-  if (getState("pathname") === "/hytch") {
+  if (getState("pathname") === "/hytches") {
     let selectedDate = getState("selectedDate")
 
     if (!selectedDate) {
@@ -22,14 +22,12 @@ function shareDates() {
     if (navigator.share !== undefined) {
       navigator.share(shareObj)
         .catch(err => console.log(err))
-      return
     }
 
     if (navigator.clipboard.writeText !== undefined) {
       navigator.clipboard.writeText(dateLink).then(function() {
         alert("Link copied to clipboard!")
       })
-      return
     }
 
     let linkText = document.createElement("p")
@@ -76,7 +74,9 @@ function shareDates() {
 
 function displayCongrats() {
   document.querySelector("#congrats-div").style.display = "flex"
-  document.querySelector("#hytch-share-button").textContent = "SHARE HYTCH"
+  Array.from(document.getElementsByClassName("hytch-share-button")).forEach( button => {
+    button.textContent = "SHARE HYTCH"
+  })
   confetti.maxCount = 100
   confetti.gradient = false
   confetti.start()
@@ -87,8 +87,9 @@ function displayCongrats() {
 
 function displayConfirm() {
   document.querySelector("#choose-div").style.display = "flex"
-  let shareButton = document.querySelector("#hytch-share-button")
-  shareButton.textContent = "CHOOSE OUR HYTCH"
+  Array.from(document.getElementsByClassName("hytch-share-button")).forEach( button => {
+    button.textContent = "CHOOSE OUR HYTCH"
+  })
 }
 
 function displayRegion(region) {
@@ -104,7 +105,7 @@ function displayRegion(region) {
   let regionEmoji = document.querySelector("#region-emoji")
   let regionText = document.querySelector("#region-text")
 
-  regionText.textContent = "Explore this week's choices in " + region.charAt(0).toUpperCase() + region.slice(1) + " London."
+  regionText.textContent = region.charAt(0).toUpperCase() + region.slice(1) + " London."
   regionEmoji.textContent = regionEmojis.filter(regionEmoji => regionEmoji[0] === region)[0][1]
   regionDiv.style.display = "flex"
 }
@@ -114,6 +115,9 @@ function displayDates (hytches) {
   if (!hytches) {
     hytchList.textContent = "Please go back and select a region"
     document.querySelector("#hytch-share-button").style.display = "none"
+    Array.from(document.querySelector("#hytch-share-button")).forEach( button => {
+      button.style.display = "none"
+    })
     return
   }
   hytches.forEach(hytch => {
@@ -161,10 +165,13 @@ async function getDates () {
 
 async function setupDates () {
   let dates = await getDates()
-  displayDates(dates)
+  await displayDates(dates)
   if (getState("pathname") === "/hytch") {
     setState("selectedDate", dates[0].id)
     document.querySelector(".hytch-checkbox-div").style.display = "none"
+    Array.from(document.getElementsByClassName("hytch-expand-button")).forEach(button => {
+      button.click()
+    })
     displayCongrats()
   }
   return
@@ -180,7 +187,8 @@ let regions = [
 
 setState("regions", regions)
 
-let shareButton = document.querySelector("#hytch-share-button")
-shareButton.addEventListener("click", shareDates)
+Array.from(document.getElementsByClassName("hytch-share-button")).forEach(button => {
+  button.addEventListener("click", shareDates)
+})
 
 export { setupDates }

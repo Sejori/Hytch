@@ -8,6 +8,7 @@
 
     <!-- styles -->
     <link rel="stylesheet" href="/styles/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
 
     <!-- icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
@@ -36,17 +37,22 @@
     <meta property="og:site_name" content="Hytch" />
   </head>
   <body>
-    <a id="home-button" href="https://www.hytchdates.co">
-      <img src="/assets/hytch_points_192x192.png" alt="hytch_points">
-      Hytch
-    </a>
+    <div id="top-links">
+      <a id="home-button" href="https://www.hytchdates.co">
+        <img src="/assets/hytch_points_192x192.png" alt="hytch_points">
+        Hytch
+      </a>
+      <a href="https://www.hytchdates.co/about">
+        About
+      </a>
+    </div>
     <section id="home" class="route">
       <div class="section-content align-center spaced container">
         <div class="app-title-text align-center">
           <h1 class="text-align-center">Plan the perfect date, together.</h1>
         </div>
 
-        <label for="region-selector">🎡 Choose an area of London to get started...</label>
+        <label for="region-selector"><h3>🎡 Choose an area of London to get started...</h3></label>
         <select id="region-selector" class="area-select" name="area_id">
           <option value="north">North</option>
           <option value="east">East</option>
@@ -59,22 +65,22 @@
         <img class="section-gif" src="https://media.giphy.com/media/RtCjVyAz5ViU0/giphy.gif" alt="romance-gif">
 
         <div class="desc-box light-shadow">
-          <h3>🤔 What's a Hytch?</h3>
+          <h2>🤔 What's a Hytch?</h2>
           <p class="small-text">Two specially curated places or events in London that go together perfectly, like fish and chips, or Will Smith and Summertime...</p>
         </div>
 
         <div class="how-it-works light-shadow">
-          <h3>How does it work?</h3>
+          <h2>How does it work?</h2>
           <ul>
-            <li><p>🌃&nbsp;Simply pick an area of London</p></li>
-            <li><p>✅&nbsp;Pick a few dates you like...</p></li>
-            <li><p>📲&nbsp;Share your faves with your partner</p></li>
-            <li><p>🥰&nbsp;Let them pick your hot date!</p></li>
+            <li><h3>🌃</h3><p>Simply pick an area of London</p></li>
+            <li><h3>✅</h3><p>Pick a few dates you like...</p></li>
+            <li><h3>📲</h3><p>Share your faves with your partner</p></li>
+            <li><h3>🥰</h3><p>Let them pick your hot date!</p></li>
           </ul>
         </div>
 
         <h3>Try something new...</h3>
-        <label for="region-selector">🎡 Choose an area of London to get started...</label>
+        <label for="region-selector"><h3>🎡 Choose an area of London to get started...</h3></label>
         <select id="region-selector" class="area-select" name="area_id">
           <option value="north">North</option>
           <option value="east">East</option>
@@ -89,12 +95,15 @@
     <section id="dates" class="route">
       <div class="section-header align-center">
         <div id="region-div" class="vertical">
-          <p id="region-emoji"></p>
-          <h4 id="region-text" class="text-align-center"></h4>
+          <h4>Explore this week's Hytches in:</h4>
+          <div class="align-center">
+            <p id="region-emoji"></p><h3 id="region-text" class="text-align-center"></h3>
+          </div>
           <p class="text-align-center small-font">(Pick at least two to share).</p>
         </div>
-        <div id="choose-div" class="vertical">
-          <h2>Choose which Hytch</h2>
+        <div id="choose-div" class="vertical text-align-center">
+          <h2>Your friend/partner/DM Slider™<br>has picked a few options for your next date.</h2>
+          <p>Tick your favourite one, and press the “PICK THIS HYTCH” button.</p>
         </div>
         <div id="congrats-div" class="vertical">
           <h2 class="text-align-center">Congratulations from Hytch!</h2>
@@ -103,10 +112,14 @@
       </div>
 
       <div class="section-content align-center">
+        <div class="hytch-share-div">
+          <button class="hytch-share-button"><img class="share-icon" src="/assets/share.svg" alt="share-icon">SHARE MY HYTCHES</button>
+        </div>
+
         <ul id="hytches-list" class="container"></ul>
 
-        <div id="hytch-share-div">
-          <button id="hytch-share-button">SHARE MY HYTCHES</button>
+        <div class="hytch-share-div">
+          <button class="hytch-share-button"><img class="share-icon" src="/assets/share.svg" alt="share-icon">SHARE MY HYTCHES</button>
         </div>
       </div>
     </section>
