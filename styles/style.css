@@ -39,10 +39,10 @@ section { height: 100%; flex-direction: column; }
 .app-title { text-decoration: underline; text-decoration-color: #ef5350; }
 .section-gif { width: 100%; margin: 1rem auto; }
 .desc-box { width: 100%; flex-direction: column; align-items: center; max-width: 1000px; color: white; background-color: #ef5350; }
-.desc-box h2 { margin-top: 1rem; margin-bottom: 0; }
+.desc-box h2 { margin-top: 1rem; margin-bottom: 0; text-align: center; }
 .desc-box p { margin: 1rem 2rem; margin-top: 0.25rem; }
 .how-it-works { width: calc(100% - 0.1rem); flex-direction: column; align-items: center; margin: 1.2rem 0rem; border: solid; border-width: 0.1rem; border-color: #ef5350; }
-.how-it-works h2 { margin-top: 1rem; margin-bottom: 0; }
+.how-it-works h2 { margin-top: 1rem; margin-bottom: 0; text-align: center; }
 .how-it-works ul { margin: 1rem 2rem; margin-top: 0.25rem; }
 .how-it-works li { display: flex; align-items: center; }
 .area-select { font-size: 1rem; margin: 0.8rem; }

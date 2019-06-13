@@ -17,7 +17,7 @@ function shareDates() {
   }
 
   if (getState("pathname") === "/hytch") {
-    let selectedDates = getState("selectedDates")
+    let selectedDates = getState("selectedDate")
     let dateLink = hytchUrl + "/hytch?ids=" + selectedDates
     let shareObj = {
       title: document.title,
@@ -174,7 +174,9 @@ async function setupDates () {
   let dates = await getDates()
   await displayDates(dates)
   if (getState("pathname") === "/hytch") {
+    console.log(dates[0].id)
     setState("selectedDate", dates[0].id)
+    console.log(getState("selectedDate"))
     document.querySelector(".hytch-checkbox-div").style.display = "none"
     Array.from(document.getElementsByClassName("hytch-expand-button")).forEach(button => {
       button.click()
