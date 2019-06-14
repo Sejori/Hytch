@@ -175,8 +175,6 @@ function hytchBuilder(hytch) {
   hytchDate1.textContent = hytch.activities[0].emoji + " " + "Start at " + hytch.activities[0].title
   hytchDate2.textContent = hytch.activities[1].emoji + " " + "End at " + hytch.activities[1].title
 
-  topContentText.appendChild(hytchTitle)
-
   if (hytch.sponsored) {
     hytchLi.sponsored = true
     hytchLi.classList.toggle("sponsored")
@@ -197,6 +195,7 @@ function hytchBuilder(hytch) {
   hytchDates.appendChild(hytchDate2)
 
   checkboxDiv.appendChild(hytchCheckbox)
+  contentDiv.appendChild(hytchTitle)
   contentDiv.appendChild(topContent)
   contentDiv.appendChild(hytchDates)
   contentDiv.appendChild(datesDiv)

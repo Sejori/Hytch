@@ -49,7 +49,7 @@ section { height: 100%; flex-direction: column; }
 .region-submit { margin-top: 0.6rem; }
 
 #dates ul { width: 100%; }
-#dates li { max-width: 100%; border-width: 0.3rem; display: flex; margin-bottom: 1.5rem; padding: 1.5rem; box-shadow: 2px 2px 4px #eaeaea; }
+#dates li { max-width: 100%; border-width: 0.3rem; display: flex; margin-bottom: 1.5rem; padding: 1rem; box-shadow: 2px 2px 4px #eaeaea; }
 .default { border: solid; border-width: 0.25rem; border-color: #ef5350; }
 .sponsored { border: solid; border-width: 0.25rem; border-color: #f2c02b; }
 #dates input { transform: scale(2); }
@@ -58,11 +58,11 @@ section { height: 100%; flex-direction: column; }
 #choose-div { display: none; }
 #congrats-div { display: none; }
 .hytch-checkbox-div { align-items: flex-start; padding-top: 3em; padding-right: 1em; }
-.hytch-content { display: flex; flex-direction: column; flex-grow: 1; }
+.hytch-content { display: flex; flex-direction: column; width: calc(100% - 2rem); }
 .hytch-title-text { flex-direction: column; width: 480px; }
 .sponsored-hytch-text { color: grey; font-size: 0.8rem; margin: 0; margin-left: 0.25rem; }
-.hytch-desc { margin-top: 0.25rem; margin-left: 0.25rem; }
-.hytch-expand-button { margin-left: auto; width: 3rem; color: #424242; }
+.hytch-desc { margin: 0.5rem 0; }
+.hytch-expand-button { align-self: flex-start; margin-left: auto; width: 3rem; color: #424242; }
 .hytch-dates { flex-direction: column; }
 .dates-div { flex-direction: column; margin-top: 2rem; margin-left: 0.2rem; border-top: none; border-right: none; border-bottom: none; }
 .date-div { flex-direction: column; margin-left: 1rem; }
