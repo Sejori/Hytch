@@ -59,7 +59,7 @@ section { height: 100%; flex-direction: column; }
 #congrats-div { display: none; }
 .hytch-checkbox-div { align-items: flex-start; padding-top: 3em; padding-right: 1em; }
 .hytch-content { display: flex; flex-direction: column; flex-grow: 1; }
-.hytch-title-text { flex-direction: column; }
+.hytch-title-text { flex-direction: column; width: 480px; }
 .sponsored-hytch-text { color: grey; font-size: 0.8rem; margin: 0; margin-left: 0.25rem; }
 .hytch-desc { margin-top: 0.25rem; margin-left: 0.25rem; }
 .hytch-expand-button { margin-left: auto; width: 3rem; color: #424242; }
