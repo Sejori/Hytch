@@ -72,7 +72,7 @@ section { height: 100%; flex-direction: column; }
 .date-emoji p { margin: 0; font-size: 1.5rem; }
 .date-div img { width: calc(100% + 1rem); margin-left: -1rem; }
 .date-min-price { margin: 0; font-size: 0.8rem; font-style: italic; text-align: right; }
-.date-div a { font-size: 1rem; }
+.date-div a { font-size: 1rem; word-break: break-all; }
 .date-address { font-size: 1rem; margin: 0.25rem; margin-left: 0; }
 .travel-div { margin: 2rem 0rem; margin-left: -1.5rem; justify-content: flex-start; align-items: center; }
 .travel-emoji { width: 2.5rem; height: 2.5rem; background-color: white; border-radius: 50%; justify-content: center; align-items: center; }
