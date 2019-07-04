@@ -95,7 +95,7 @@ function displayCongrats() {
 function displayConfirm() {
   document.querySelector("#choose-div").style.display = "flex"
   Array.from(document.getElementsByClassName("hytch-share-button")).forEach( button => {
-    button.textContent = "CHOOSE OUR HYTCH"
+    button.textContent = "PICK THIS HYTCH"
   })
 }
 
@@ -175,7 +175,7 @@ async function setupDates () {
   await displayDates(dates)
   if (getState("pathname") === "/hytch") {
     setState("selectedDate", dates[0].id)
-    document.querySelector(".hytch-checkbox-div").style.display = "none"
+    document.querySelector(".hytch-checkbox-div").style.visibility = "hidden"
     Array.from(document.getElementsByClassName("hytch-expand-button")).forEach(button => {
       button.click()
     })
